@@ -1,27 +1,13 @@
 import React, { useState, useContext } from 'react';
 import defaultBcg from '../images/room-1.jpeg';
-import Hero from '../components/Hero';
 import Banner from '../components/Banner';
 import { Link, useParams } from 'react-router-dom';
 import { RoomContext } from '../context';
 import StyledHero from '../components/StyledHero';
 
-// export default class SingleRoom extends Component {
-//   constructor(props) {
-//     super(props);
-//     //console.log(this.props);
-//   }
-
-//   componentDidMount() {}
-//   render() {
-//     return <div>Hello from SingleRoom page</div>;
-//   }
-// }
-
 export default function SingleRoom() {
   const { slug } = useParams();
   const [slugRoom, setSlugRoom] = useState(slug);
-  const [defaultBcgRoom, setDefaultBcgRoom] = useState(defaultBcg);
 
   const { getRoom } = useContext(RoomContext);
   const room = getRoom(slugRoom);
@@ -37,7 +23,7 @@ export default function SingleRoom() {
           </Link>
         </div>
       ) : (
-        <StyledHero img={mainImg || defaultBcgRoom}>
+        <StyledHero img={mainImg || defaultBcg}>
           <Banner title={`${room?.name} room`}>
             <Link to="/rooms" className="btn-primary">
               back to rooms
